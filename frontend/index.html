@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayBeats Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo"><img src="logo.png" alt="Logo"></div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Instruments</a></li>
+                <li><a href="#">Community</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+            <a href="#" class="btn join-btn">Join us</a>
+            <a href="#" class="btn contact-btn">Contact us</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Unleash Your Inner Musician with PlayBeats Online</h1>
+            <p>Step into a world where your camera transforms into a musical playground. Explore the magic of playing virtual instruments like guitar and piano, right from your screen.</p>
+            <button class="btn hero-btn" id="runScriptButton">Start Hand Tracking</button>
+            <p id="output"></p>
+        </div>
+        <div class="hero-image"><img src="main1.jpeg" alt="Floating Symbols"></div>
+    </section>
+    <section id="features" class="features">
+        <div class="feature-item" data-aos="fade-up">
+            <img src="guitar-instrument.png" alt="Guitar Icon">
+            <h3>Virtual Guitar</h3>
+            <p>Strum and pluck with precision using our state-of-the-art guitar simulation.</p>
+        </div>
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+            <img src="piano.png" alt="Piano Icon">
+            <h3>Virtual Piano</h3>
+            <p>Experience the elegance of a grand piano through your screen.</p>
+        </div>
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+            <img src="photo-camera.png" alt="Camera Icon">
+            <h3>Camera Integration</h3>
+            <p>Play seamlessly with intuitive camera controls.</p>
+        </div>
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="600">
+            <img src="wave-sound.png" alt="Sound Icon">
+            <h3>Realistic Sound</h3>
+            <p>Enjoy high-quality sound that mimics real instruments.</p>
+        </div>
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="800">
+            <img src="group-users.png" alt="Community Icon">
+            <h3>Community Driven</h3>
+            <p>Join a community of music enthusiasts and share your creations.</p>
+        </div>
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="1000">
+            <img src="headphone-symbol.png" alt="Headphones Icon">
+            <h3>Personalized Experience</h3>
+            <p>Customize your playing experience to suit your style.</p>
+        </div>
+    </section>
+
+    <section class="music-journey">
+        <div class="text-content" data-aos="fade-right">
+            <h2>Innovate Your Music Journey</h2>
+            <ul>
+                <li><strong>Real-time Interaction</strong> </li>
+                <li><strong>Customizable Sounds</strong> </li>
+                <li><strong>Collaborative Play</strong> </li>
+            </ul>
+        </div>
+        <div class="journey-image" data-aos="fade-left">
+            <img src="piano1.jpeg" alt="Green Guitar">
+        </div>
+    </section>
+
+    <!-- last sec -->
+    <section class="playbeats-revolution">
+        <h2>Join the PlayBeats Revolution</h2>
+        <div class="stats">
+            <div class="stat-item">
+                <h3>2.5x</h3>
+                <p><strong>User Engagement</strong></p>
+                <p>Boost your musical interaction</p>
+            </div>
+            <div class="stat-item">
+                <h3>95%</h3>
+                <p><strong>User Satisfaction</strong></p>
+                <p>Loved by our community</p>
+            </div>
+            <div class="stat-item">
+                <h3>40%</h3>
+                <p><strong>Community Growth</strong></p>
+                <p>Join our expanding family</p>
+            </div>
+        </div>
+        <a href="#" class="cta-button">Get Started Today</a>
+    </section>
+    <footer>
+        <p>© 2024 PlayBeats Online - Where Your Musical Journey Begins</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+    <script>
+        document.getElementById('runScriptButton').addEventListener('click', function() {
+            fetch('http://127.0.0.1:5000/frontend/run-script', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('output').innerText = data.output;  // Show the script's output in the page
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
